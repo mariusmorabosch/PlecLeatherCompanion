@@ -59,16 +59,19 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxSize()
                             .padding(innerPadding)
                             .padding(horizontal = 20.dp, vertical = 40.dp)
                             .verticalScroll(rememberScrollState()),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                        verticalArrangement = Arrangement.spacedBy(
+                            16.dp,
+                        )
                     ) {
                         Text(text = "Thread Length Calculator", fontWeight = FontWeight.Bold)
 
                         TextField(
+                            modifier = Modifier.fillMaxWidth(),
                             value = state.holeCount,
                             label = {
                                 Text("Hole Count")
@@ -78,6 +81,7 @@ class MainActivity : ComponentActivity() {
                         )
                         Box {
                             TextField(
+                                modifier = Modifier.fillMaxWidth(),
                                 value = state.spacing.label,
                                 readOnly = true,
                                 label = {
@@ -114,6 +118,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         TextField(
+                            modifier = Modifier.fillMaxWidth(),
                             value = state.thickness,
                             label = { Text("Thickness (mm)") },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -121,6 +126,7 @@ class MainActivity : ComponentActivity() {
                         )
 
                         TextField(
+                            modifier = Modifier.fillMaxWidth(),
                             value = state.finishingLength,
                             label = { Text("Finishing Length (mm)") },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -128,6 +134,7 @@ class MainActivity : ComponentActivity() {
                         )
 
                         Button(
+                            modifier = Modifier.fillMaxWidth(),
                             onClick = viewModel::onCalculateClick,
                             enabled = state.isCalculateEnabled
                         ) {
